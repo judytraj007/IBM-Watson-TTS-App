@@ -9,7 +9,7 @@ from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from flask import Flask, render_template, request
 from flask import send_file
 
-authenticator = IAMAuthenticator('UDALGYxjLCw-H6fsPCjv6zF-_r4e_m-L8EVDWQz9OQut')
+authenticator = IAMAuthenticator('apiKey')
 service = TextToSpeechV1(authenticator=authenticator)
 service.set_service_url('https://gateway-lon.watsonplatform.net/text-to-speech/api')
 
@@ -61,5 +61,5 @@ def submit():
 		return send_file(file_path, as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',debug=True)
 
